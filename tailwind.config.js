@@ -3,7 +3,21 @@ module.exports = {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
-      colors: {},
+      fontFamily: { nunito: 'Nunito' },
+      colors: {
+        gray: { 100: '#808080', 200: '#323232', 300: '#212121' },
+        white: '#fff',
+        cyan: '#14ffec',
+        red: '#d6436e',
+        green: '#25da72',
+      },
+      fontSize: {
+        sm: '14px',
+        md: '18px',
+        lg: '24px',
+        xl: '32px',
+        base: '16px',
+      },
     },
     screens: {
       sm: '661px',
