@@ -4,10 +4,10 @@ import { Outlet } from 'react-router-dom'
 
 const Home = () => {
   return (
-    <div>
-      Home
+    <main className="relative flex h-full w-full flex-col items-center font-nunito text-white first-letter:content-center">
+      <div className="fixed -z-10 h-screen w-screen bg-gray-300" />
       <Outlet />
-    </div>
+    </main>
   )
 }
 
