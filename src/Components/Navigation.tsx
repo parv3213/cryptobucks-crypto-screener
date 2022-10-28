@@ -27,7 +27,8 @@ const Navigation = () => {
             `m-2.5 w-full cursor-pointer rounded text-center font-nunito text-base font-semibold capitalize ${
               isActive ? 'bg-cyan text-gray-300' : 'bg-gray-200 text-gray-100 hover:text-cyan'
             }`
-          }>
+          }
+          key={navigation.label}>
           {navigation.label}
         </NavLink>
       ))}
