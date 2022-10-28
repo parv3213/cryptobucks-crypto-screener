@@ -1,6 +1,6 @@
 import { createContext, useLayoutEffect, useState } from 'react';
 
-interface CryptoData {
+export interface CryptoData {
   id: any;
   symbol: any;
   name: any;
@@ -32,14 +32,36 @@ interface CryptoData {
   price_change_percentage_7d_in_currency: any;
 }
 
+export interface SearchResultObject {
+  id: any;
+  name: any;
+  api_symbol: any;
+  symbol: any;
+  market_cap_rank: any;
+  thumb: any;
+  large: any;
+}
+
 interface CryptoProviderInterface {
   cryptoData: CryptoData[] | [];
   setCryptoData: React.Dispatch<React.SetStateAction<CryptoData[] | []>>;
+  getCryptoData: () => Promise<any>;
+  getSearchCoins: (searchString: string) => Promise<any>;
+  setCryptoDataForCoin: (coinId: string) => Promise<any>;
 }
 
 export const CryptoContext = createContext<CryptoProviderInterface>({
   cryptoData: [],
   setCryptoData: () => undefined,
+  getCryptoData: async () => {
+    return;
+  },
+  getSearchCoins: async () => {
+    return;
+  },
+  setCryptoDataForCoin: async () => {
+    return;
+  },
 });
 
 export const CryptoProvider = ({ children }: any) => {
@@ -63,11 +85,40 @@ export const CryptoProvider = ({ children }: any) => {
     getCryptoData();
   }, []);
 
+  const getSearchCoins = async (searchString: string) => {
+    try {
+      const data = await fetch(`https://api.coingecko.com/api/v3/search?query=${searchString}`)
+        .then(res => res.json())
+        .then(json => json);
+
+      return data.coins as SearchResultObject[];
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const setCryptoDataForCoin = async (coinId: string) => {
+    try {
+      const data = await fetch(
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coinId}&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d`,
+      )
+        .then(res => res.json())
+        .then(json => json);
+
+      setCryptoData(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <CryptoContext.Provider
       value={{
         cryptoData,
+        getCryptoData,
         setCryptoData,
+        getSearchCoins,
+        setCryptoDataForCoin,
       }}
     >
       {children}
