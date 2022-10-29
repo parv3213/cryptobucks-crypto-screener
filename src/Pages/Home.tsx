@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import { Outlet } from 'react-router-dom'
-import Logo from '../Components/Logo'
-import Navigation from '../Components/Navigation'
-import { CryptoProvider } from '../Context/CryptoContext'
+import { Outlet } from 'react-router-dom';
+import Logo from '../Components/Logo';
+import Navigation from '../Components/Navigation';
+import { CryptoProvider } from '../Context/CryptoContext';
 
 const Home = () => {
   return (
@@ -15,7 +15,7 @@ const Home = () => {
         <Outlet />
       </main>
     </CryptoProvider>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

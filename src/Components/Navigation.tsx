@@ -1,5 +1,5 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const navigations = [
   {
@@ -14,12 +14,12 @@ const navigations = [
     to: '/saved',
     label: 'Saved',
   },
-]
+];
 
 const Navigation = () => {
   return (
     <nav className="mt-16 flex w-[40%] justify-around rounded-lg border border-solid border-cyan align-middle">
-      {navigations.map((navigation) => (
+      {navigations.map(navigation => (
         <NavLink
           to={navigation.to}
           end
@@ -28,12 +28,13 @@ const Navigation = () => {
               isActive ? 'bg-cyan text-gray-300' : 'bg-gray-200 text-gray-100 hover:text-cyan'
             }`
           }
-          key={navigation.label}>
+          key={navigation.label}
+        >
           {navigation.label}
         </NavLink>
       ))}
     </nav>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;
