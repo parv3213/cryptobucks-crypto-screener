@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/cryptobucks-crypto-screener/static/css/main.bd7fc235.css",
+    "main.js": "/cryptobucks-crypto-screener/static/js/main.417a6083.js",
+    "static/media/submit-icon.svg": "/cryptobucks-crypto-screener/static/media/submit-icon.e4339f5525903ab6758211da17e848b7.svg",
+    "static/media/logo.svg": "/cryptobucks-crypto-screener/static/media/logo.2ce8e122c6cf18ca3c25b2b663398aab.svg",
+    "index.html": "/cryptobucks-crypto-screener/index.html",
+    "static/media/search-icon.svg": "/cryptobucks-crypto-screener/static/media/search-icon.2495c6465338e239b370150f484a8d8a.svg",
+    "main.bd7fc235.css.map": "/cryptobucks-crypto-screener/static/css/main.bd7fc235.css.map",
+    "main.417a6083.js.map": "/cryptobucks-crypto-screener/static/js/main.417a6083.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bd7fc235.css",
+    "static/js/main.417a6083.js"
+  ]
+}
