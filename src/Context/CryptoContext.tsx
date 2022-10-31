@@ -67,6 +67,10 @@ interface CryptoProviderInterface {
   ) => Promise<any>;
   getSearchCoins: (searchString: string) => Promise<any>;
   setCryptoDataForCoin: (coinId: string) => Promise<any>;
+  searchingCoin: boolean;
+  setSearchingCoin: React.Dispatch<React.SetStateAction<boolean>>;
+  gettingCyptoData: boolean;
+  setGettingCryptoData: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const CryptoContext = createContext<CryptoProviderInterface>({
@@ -87,6 +91,10 @@ export const CryptoContext = createContext<CryptoProviderInterface>({
   setCryptoDataForCoin: async () => {
     return;
   },
+  searchingCoin: false,
+  setSearchingCoin: () => undefined,
+  gettingCyptoData: false,
+  setGettingCryptoData: () => undefined,
 });
 
 export const CryptoProvider = ({ children }: any) => {
@@ -96,6 +104,8 @@ export const CryptoProvider = ({ children }: any) => {
   const [page, setPage] = useState(defaultParams.page);
   const [perPage, setPerPage] = useState(defaultParams.perPage);
   const [totalPages, setTotalPages] = useState<number>(250);
+  const [gettingCyptoData, setGettingCryptoData] = useState(false);
+  const [searchingCoin, setSearchingCoin] = useState(false);
 
   const getTotalPages = async () => {
     try {
@@ -116,6 +126,7 @@ export const CryptoProvider = ({ children }: any) => {
     changePage?: number,
     changePerPage?: number,
   ) => {
+    setGettingCryptoData(true);
     if (defaultSetup) {
       changeCurrency = defaultParams.currency;
       changeSort = defaultParams.sort;
@@ -140,6 +151,8 @@ export const CryptoProvider = ({ children }: any) => {
       setCryptoData(data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setGettingCryptoData(false);
     }
   };
 
@@ -153,6 +166,7 @@ export const CryptoProvider = ({ children }: any) => {
   );
 
   const getSearchCoins = async (searchString: string) => {
+    setSearchingCoin(true);
     try {
       const data = await fetch(`https://api.coingecko.com/api/v3/search?query=${searchString}`)
         .then(res => res.json())
@@ -161,10 +175,13 @@ export const CryptoProvider = ({ children }: any) => {
       return data.coins as SearchResultObject[];
     } catch (error) {
       console.log(error);
+    } finally {
+      setSearchingCoin(false);
     }
   };
 
   const setCryptoDataForCoin = async (coinId: string) => {
+    setGettingCryptoData(true);
     try {
       const data = await fetch(
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coinId}&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d`,
@@ -175,6 +192,8 @@ export const CryptoProvider = ({ children }: any) => {
       setCryptoData(data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setGettingCryptoData(false);
     }
   };
 
@@ -192,6 +211,10 @@ export const CryptoProvider = ({ children }: any) => {
         setCryptoData,
         getSearchCoins,
         setCryptoDataForCoin,
+        searchingCoin,
+        setSearchingCoin,
+        gettingCyptoData,
+        setGettingCryptoData,
       }}
     >
       {children}

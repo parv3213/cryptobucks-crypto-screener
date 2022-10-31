@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import search from '../assets/search-icon.svg';
 import { CryptoContext, SearchResultObject } from '../Context/CryptoContext';
 import debounce from 'lodash.debounce';
+import Spinner from './Spinner';
 
 const SearchInput = ({
   handleSearch,
@@ -11,7 +12,7 @@ const SearchInput = ({
   searchResult: SearchResultObject[];
 }) => {
   const [searchString, setSearchString] = useState('');
-  const { setCryptoDataForCoin } = useContext(CryptoContext);
+  const { setCryptoDataForCoin, searchingCoin } = useContext(CryptoContext);
 
   return (
     <div className="relative w-96">
@@ -33,7 +34,11 @@ const SearchInput = ({
       </form>
       {searchString.length > 0 ? (
         <div className="absolute top-12 z-[10] h-96 w-full overflow-scroll rounded bg-gray-200 bg-opacity-60 backdrop-blur-sm  ">
-          {
+          {searchingCoin ? (
+            <div className="flex h-full w-full items-center justify-center">
+              <Spinner /> <span className="ml-2">Searching</span>
+            </div>
+          ) : (
             <ul className="mx-4 my-4">
               {searchResult.map((result): any => {
                 return (
@@ -52,7 +57,7 @@ const SearchInput = ({
                 );
               })}
             </ul>
-          }
+          )}
         </div>
       ) : null}
     </div>
