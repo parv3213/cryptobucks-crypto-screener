@@ -10,9 +10,9 @@ const TableComponent = () => {
     <>
       <div className="rounded border border-solid border-gray-100">
         {gettingCyptoData ? (
-          <tr className="flex min-h-[50vh] w-full items-center justify-center">
+          <div className="flex min-h-[50vh] w-full items-center justify-center">
             <Spinner /> <span className="ml-2">please wait...</span>
-          </tr>
+          </div>
         ) : (
           <table className="w-full table-auto">
             <thead className="border-b border-gray-100 text-center text-base capitalize text-gray-100 ">
