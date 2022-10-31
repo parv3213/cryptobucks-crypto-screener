@@ -21,7 +21,7 @@ const Filter = () => {
   const { getCryptoData } = useContext(CryptoContext);
 
   return (
-    <div className="mb-10 w-full rounded border border-solid border-gray-100">
+    <div className="mb-10 w-full rounded-lg border-2 border-solid border-gray-100">
       <div className="mx-6 my-2 flex items-center justify-between ">
         <div>
           <Search />

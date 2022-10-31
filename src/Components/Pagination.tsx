@@ -55,6 +55,8 @@ const Pagination = () => {
         <span>per page:</span>
         <input
           type="text"
+          min={1}
+          max={250}
           value={changePerPage}
           onChange={e => {
             e.preventDefault();
