@@ -109,8 +109,8 @@ const TableComponent = () => {
       </div>
       <div className="mt-4 flex items-center justify-between">
         <span className="capitalize">
-          Data provided by{' '}
-          <a href="https://www.coingecko.com/" target={'_blank'} className="text-cyan">
+          Data provided by rel="noopener noreferrer"
+          <a href="https://www.coingecko.com/" target={'_blank'} className="text-cyan" rel="noopener noreferrer">
             CoinGecko
           </a>
         </span>

@@ -71,6 +71,7 @@ interface CryptoProviderInterface {
   setSearchingCoin: React.Dispatch<React.SetStateAction<boolean>>;
   gettingCyptoData: boolean;
   setGettingCryptoData: React.Dispatch<React.SetStateAction<boolean>>;
+  getCoinData: (getCoinData: string) => Promise<any>;
 }
 
 export const CryptoContext = createContext<CryptoProviderInterface>({
@@ -95,6 +96,9 @@ export const CryptoContext = createContext<CryptoProviderInterface>({
   setSearchingCoin: () => undefined,
   gettingCyptoData: false,
   setGettingCryptoData: () => undefined,
+  getCoinData: async () => {
+    return undefined;
+  },
 });
 
 export const CryptoProvider = ({ children }: any) => {
@@ -197,6 +201,21 @@ export const CryptoProvider = ({ children }: any) => {
     }
   };
 
+  const getCoinData = async (coinId: string) => {
+    try {
+      const data: any = await fetch(
+        `https://api.coingecko.com/api/v3/coins/${coinId}?tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=false`,
+      )
+        .then(res => res.json())
+        .then(json => json);
+
+      return data;
+    } catch (error) {
+      console.log(error);
+      return undefined;
+    }
+  };
+
   return (
     <CryptoContext.Provider
       value={{
@@ -215,6 +234,7 @@ export const CryptoProvider = ({ children }: any) => {
         setSearchingCoin,
         gettingCyptoData,
         setGettingCryptoData,
+        getCoinData,
       }}
     >
       {children}
