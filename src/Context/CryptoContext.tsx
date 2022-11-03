@@ -120,6 +120,7 @@ export const CryptoProvider = ({ children }: any) => {
       setTotalPages(data.length);
     } catch (error) {
       console.log(error);
+      alert('Error calling Coingecko API. Try again later.');
     }
   };
 
@@ -155,6 +156,7 @@ export const CryptoProvider = ({ children }: any) => {
       setCryptoData(data);
     } catch (error) {
       console.log(error);
+      alert('Error calling Coingecko API. Try again later.');
     } finally {
       setGettingCryptoData(false);
     }
@@ -179,6 +181,7 @@ export const CryptoProvider = ({ children }: any) => {
       return data.coins as SearchResultObject[];
     } catch (error) {
       console.log(error);
+      alert('Error calling Coingecko API. Try again later.');
     } finally {
       setSearchingCoin(false);
     }
@@ -196,6 +199,7 @@ export const CryptoProvider = ({ children }: any) => {
       setCryptoData(data);
     } catch (error) {
       console.log(error);
+      alert('Error calling Coingecko API. Try again later.');
     } finally {
       setGettingCryptoData(false);
     }
@@ -212,6 +216,7 @@ export const CryptoProvider = ({ children }: any) => {
       return data;
     } catch (error) {
       console.log(error);
+      alert('Error calling Coingecko API. Try again later.');
       return undefined;
     }
   };

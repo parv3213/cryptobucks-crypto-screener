@@ -3,6 +3,8 @@ import { CryptoContext } from '../Context/CryptoContext';
 import Pagination from './Pagination';
 import Spinner from './Spinner';
 
+import { NavLink } from 'react-router-dom';
+
 const TableComponent = () => {
   const { cryptoData, currency, gettingCyptoData } = useContext(CryptoContext);
 
@@ -54,9 +56,13 @@ const TableComponent = () => {
                       </svg>
 
                       <img src={data.image} alt="crypto-mage" className="mx-2 w-[1.25rem]" />
-                      <p className="uppercase">{data.symbol ? data.symbol : 'null'}</p>
+                      <p className="uppercase">
+                        <NavLink to={`/${data.id}`} end>
+                          {data.symbol}
+                        </NavLink>
+                      </p>
                     </td>
-                    <td className="py-4 hover:bg-gray-200">{data.name ? data.name : 'null'}</td>
+                    <td className="py-4 hover:bg-gray-200">{data.name}</td>
                     <td className="py-4 hover:bg-gray-200">
                       {new Intl.NumberFormat('en-IN', {
                         style: 'currency',
@@ -109,7 +115,7 @@ const TableComponent = () => {
       </div>
       <div className="mt-4 flex items-center justify-between">
         <span className="capitalize">
-          Data provided by rel="noopener noreferrer"
+          Data provided by{' '}
           <a href="https://www.coingecko.com/" target={'_blank'} className="text-cyan" rel="noopener noreferrer">
             CoinGecko
           </a>
