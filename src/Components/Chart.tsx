@@ -82,7 +82,7 @@ const Chart = ({ coinId, currency }: { coinId: string; currency: string }) => {
   return (
     <div className="h-[70%] w-full">
       <RenderLineChart data={convertedData} currency={currency} dataKey={dataKey} />
-      <div className="flex">
+      <div className="flex flex-wrap">
         {/* Data Filter */}
         <GraphFilters title="Price" handleClick={handleDataKeyChange} value="prices" currentSelected={dataKey} />
         <GraphFilters

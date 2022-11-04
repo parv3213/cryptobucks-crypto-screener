@@ -277,7 +277,7 @@ const CryptoDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col justify-end md:flex-row">
+            <div className="flex flex-row justify-end">
               {/* Facebook */}
               {cryptoData.links?.facebook_username ? (
                 <a href={`https://www.facebook.com/${cryptoData.links?.facebook_username}`} className="ml-2">
