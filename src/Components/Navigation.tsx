@@ -18,7 +18,7 @@ const navigations = [
 
 const Navigation = () => {
   return (
-    <nav className="mt-16 flex w-[40%] justify-around rounded-lg border border-solid border-cyan align-middle">
+    <nav className="mt-24 flex w-[80%] justify-around rounded-lg border border-solid border-cyan align-middle lg:mt-16 lg:w-[40%]">
       {navigations.map(navigation => (
         <NavLink
           to={navigation.to}
