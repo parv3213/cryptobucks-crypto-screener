@@ -7,10 +7,6 @@ const navigations = [
     label: 'Crypto',
   },
   {
-    to: '/trending',
-    label: 'Trending',
-  },
-  {
     to: '/saved',
     label: 'Saved',
   },

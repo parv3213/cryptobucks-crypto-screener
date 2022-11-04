@@ -5,7 +5,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import Home from './Pages/Home';
 import Crypto from './Pages/Crypto';
-import Trending from './Pages/Trending';
 import Saved from './Pages/Saved';
 import CryptoDetails from './Components/CryptoDetails';
 
@@ -23,10 +22,6 @@ const router = createBrowserRouter([
             element: <CryptoDetails />,
           },
         ],
-      },
-      {
-        path: '/trending',
-        element: <Trending />,
       },
       {
         path: '/saved',
