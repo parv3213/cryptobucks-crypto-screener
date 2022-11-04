@@ -43,9 +43,9 @@ const Pagination = () => {
   };
 
   return (
-    <div className="flex items-center justify-end">
+    <div className="flex flex-col items-center justify-end md:ml-2 md:flex-row">
       <form
-        className="mr-6 flex items-center"
+        className="mr-6 mb-2 flex items-center md:mb-0"
         onSubmit={e => {
           e.preventDefault();
           getCryptoData(undefined, undefined, undefined, defaultParams.page, Number(changePerPage));
@@ -70,79 +70,81 @@ const Pagination = () => {
           <img src={submit} alt="submit" />
         </button>
       </form>
-      <button>
-        <img src={paginationArrow} alt="paginationArrow" className="w-[2rem] rotate-180" />
-      </button>
-      <ul className="mx-2 flex items-center font-semibold">
-        {page + 1 === TotalNumber || page === TotalNumber ? (
-          <li>
-            {' '}
-            <button
-              onClick={multiStepPrev}
-              className="flex h-8  w-8 items-center justify-center rounded-full text-lg outline-0 hover:text-cyan    "
-            >
-              ...
-            </button>
-          </li>
-        ) : null}
-
-        {page - 1 !== 0 ? (
-          <li>
-            <button
-              onClick={prev}
-              className="mx-1.5 flex  h-8 w-8 items-center justify-center rounded-full bg-gray-200 outline-0 hover:text-cyan"
-            >
+      <div className="flex">
+        <button>
+          <img src={paginationArrow} alt="paginationArrow" className="w-[2rem] rotate-180" />
+        </button>
+        <ul className="mx-2 flex items-center font-semibold">
+          {page + 1 === TotalNumber || page === TotalNumber ? (
+            <li>
               {' '}
-              {page - 1}{' '}
-            </button>
-          </li>
-        ) : null}
-        <li>
-          <button
-            disabled
-            className="mx-1.5  flex h-8 w-8 items-center justify-center rounded-full bg-cyan text-gray-300 outline-0"
-          >
-            {page}
-          </button>
-        </li>
+              <button
+                onClick={multiStepPrev}
+                className="flex h-8  w-8 items-center justify-center rounded-full text-lg outline-0 hover:text-cyan    "
+              >
+                ...
+              </button>
+            </li>
+          ) : null}
 
-        {page + 1 !== TotalNumber && page !== TotalNumber ? (
+          {page - 1 !== 0 ? (
+            <li>
+              <button
+                onClick={prev}
+                className="mx-1.5 flex  h-8 w-8 items-center justify-center rounded-full bg-gray-200 outline-0 hover:text-cyan"
+              >
+                {' '}
+                {page - 1}{' '}
+              </button>
+            </li>
+          ) : null}
           <li>
             <button
-              onClick={next}
-              className="mx-1.5 flex  h-8 w-8 items-center justify-center rounded-full bg-gray-200 outline-0 hover:text-cyan"
+              disabled
+              className="mx-1.5  flex h-8 w-8 items-center justify-center rounded-full bg-cyan text-gray-300 outline-0"
             >
-              {page + 1}
+              {page}
             </button>
           </li>
-        ) : null}
 
-        {page + 1 !== TotalNumber && page !== TotalNumber ? (
-          <li>
-            {' '}
-            <button
-              onClick={multiStepNext}
-              className="flex h-8  w-8 items-center justify-center rounded-full text-lg outline-0 hover:text-cyan    "
-            >
-              ...
-            </button>
-          </li>
-        ) : null}
+          {page + 1 !== TotalNumber && page !== TotalNumber ? (
+            <li>
+              <button
+                onClick={next}
+                className="mx-1.5 flex  h-8 w-8 items-center justify-center rounded-full bg-gray-200 outline-0 hover:text-cyan"
+              >
+                {page + 1}
+              </button>
+            </li>
+          ) : null}
 
-        {page !== TotalNumber ? (
-          <li>
-            <button
-              onClick={() => getCryptoData(undefined, undefined, undefined, TotalNumber)}
-              className="mx-1.5 flex  h-8 w-8 items-center justify-center rounded-full bg-gray-200 outline-0 hover:text-cyan"
-            >
-              {TotalNumber}
-            </button>
-          </li>
-        ) : null}
-      </ul>
-      <button>
-        <img src={paginationArrow} alt="paginationArrow" className="w-[2rem]" />
-      </button>
+          {page + 1 !== TotalNumber && page !== TotalNumber ? (
+            <li>
+              {' '}
+              <button
+                onClick={multiStepNext}
+                className="flex h-8  w-8 items-center justify-center rounded-full text-lg outline-0 hover:text-cyan    "
+              >
+                ...
+              </button>
+            </li>
+          ) : null}
+
+          {page !== TotalNumber ? (
+            <li>
+              <button
+                onClick={() => getCryptoData(undefined, undefined, undefined, TotalNumber)}
+                className="mx-1.5 flex  h-8 w-8 items-center justify-center rounded-full bg-gray-200 outline-0 hover:text-cyan"
+              >
+                {TotalNumber}
+              </button>
+            </li>
+          ) : null}
+        </ul>
+        <button>
+          <img src={paginationArrow} alt="paginationArrow" className="w-[2rem]" />
+        </button>
+      </div>
     </div>
   );
 };

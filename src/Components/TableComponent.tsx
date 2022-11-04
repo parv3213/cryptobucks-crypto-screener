@@ -115,8 +115,8 @@ const TableComponent = () => {
           </table>
         )}
       </div>
-      <div className="mt-4 flex items-center justify-between">
-        <span className="capitalize">
+      <div className="mt-4 flex flex-col items-center justify-between md:flex-row">
+        <span className="mb-4 capitalize md:mb-0">
           Data provided by{' '}
           <a href="https://www.coingecko.com/" target={'_blank'} className="text-cyan" rel="noopener noreferrer">
             CoinGecko
