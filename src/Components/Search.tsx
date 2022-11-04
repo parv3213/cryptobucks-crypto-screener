@@ -15,7 +15,7 @@ const SearchInput = ({
   const { setCryptoDataForCoin, searchingCoin } = useContext(CryptoContext);
 
   return (
-    <div className="relative w-96">
+    <div className="relative w-full lg:w-60 xl:w-96">
       <form className="relative flex w-full items-center rounded bg-gray-200" onSubmit={e => e.preventDefault()}>
         <input
           value={searchString}
